@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.querySelector(".createItem");
   const toDoUl = document.querySelector(".toDoUl");
   const completedUl = document.querySelector(".completedUl");
+  const form = document.querySelector("#header");
 
   function createLi() {
     const doneButton = document.createElement("input");
@@ -52,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  submitButton.addEventListener("click", e => {
+  form.addEventListener("submit", e => {
     e.preventDefault();
     createLi();
   });

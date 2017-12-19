@@ -3,7 +3,7 @@
 }
 
 body {
-  background: url(../img/galaxy.jpg) no-repeat;
+  background: url(../img/galaxy.jpg) repeat-y;
   background-size: cover;
 }
 
@@ -23,7 +23,7 @@ ul {
 }
 
 .toDoUl:after {
-  content: ".";
+  content: " ";
   text-align: center;
 }
 
@@ -64,6 +64,13 @@ p {
 
 .submit:hover {
   transform: rotate(280deg);
+}
+
+.toDoUl,
+.completedUl {
+  min-height: 200px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .toDoUl > li {
   max-width: 480px;
