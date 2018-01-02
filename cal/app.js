@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let date = new Date();
   const wrapper = document.getElementById("wrapper");
   let currentYear = date.getFullYear();
+  let day = date.getDay();
 
   console.log(date.getDate());
   const febNumDays = isLeapYear(currentYear);
