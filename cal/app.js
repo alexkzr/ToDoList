@@ -2,29 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const wrapper = document.getElementById("wrapper");
   let date = new Date();
   console.log(date.getDate());
-
-  function isLeapYear(years) {
-    if ((years % 4 == 0 && years % 100 != 0) || years % 400 == 0) {
-      return true;
+  const febNumDays = 0;
+  function isLeapYear(year) {
+    if ((year % 100 != 0 && year % 4 == 0) || year % 400 == 0) {
+      febNumberOfDays = 29;
+      console.log("It's a leap year");
     } else {
-      return false;
+      febNumberOfDays = 28;
+      console.log("It's not a leap year");
     }
   }
 
-  function daysInFebruary(years) {
-    if (isLeapYear(years) === true) {
-      console.log("it's a leap year");
-      return 29;
-    } else {
-      console.log("it's not leap year");
-      return 28;
-    }
-  }
-
-  daysInFebruary(2016);
+  isLeapYear(2016);
 
   function daysInYear() {
-    if (daysInFebruary === 29) {
+    if (febNumDays === 29) {
       return 366;
     } else {
       return 365;
@@ -40,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.appendChild(submit);
 
     submit.addEventListener("click", () => {
-      const userInput = input.textContent;
-      return daysInFebruary(userInput);
+      const userInput = input.value;
+      return isLeapYear(userInput);
     });
   }
 
@@ -53,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const daysInMonth = [
     31,
-    daysInFebruary(),
+    isLeapYear(),
     30,
     31,
     30,
