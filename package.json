@@ -1,0 +1,26 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "the todolist",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.23.2",
+    "gulp": "^3.9.1",
+    "gulp-ruby-sass": "^3.0.0",
+    "gulp-sass": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/askkozy/ToDoList.git"
+  },
+  "author": "ASKozyrev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/askkozy/ToDoList/issues"
+  },
+  "homepage": "https://github.com/askkozy/ToDoList#readme"
+}
