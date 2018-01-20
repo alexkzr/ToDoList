@@ -3,19 +3,30 @@
 }
 
 body {
-  background: url(../img/galaxy.jpg) repeat-y;
-  background-size: cover;
-}
+  background: url(../img/bg_wood_hor.jpg) repeat;
 
+}
+.tdContainer {
+  background: url(../img/empty.svg) no-repeat;
+  
+ 
+
+}
 #wrapper {
   margin: 0 auto;
   max-width: 480px;
-  min-height: 600px;
+  min-height: 500px;
   background-color: rgba(214, 205, 205, 0.534);
   border-radius: 5px;
-  padding-bottom: 15px;
   margin-top: 30px;
-  padding-top: 20px;
+}
+
+.divider {
+  background: url(../img/divider.svg) no-repeat;
+  height: 20px;
+  width: inherit;
+  display: flex;
+  margin: 0 6%;
 }
 ul {
   margin: 0 auto;
@@ -62,9 +73,6 @@ p {
   padding: 0;
 }
 
-.submit:hover {
-  transform: rotate(280deg);
-}
 
 .toDoUl,
 .completedUl {

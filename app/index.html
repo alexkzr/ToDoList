@@ -5,27 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+
     <title>Kozy's ToDoList</title>
 </head>
 
 <body>
     <div id="wrapper">
-        <div id="header">
+        <form id="header">
             <input type="text" class="createItem" placeholder="Add an item">
-            <button type="submit" class="submit"></button>
-        </div>
+            <button type="submit" name="submit" value="submit" class="submit"></button>
+        </form>
+        <div id="tdContainer">
         <div id="toDoItems">
             <ul class="toDoUl">
 
             </ul>
         </div>
+        <div class="divider"></div>
         <div id="toDoCompleted">
             <ul class="completedUl">
 
 
             </ul>
         </div>
+    </div>
     </div>
 
     <script src="js/app.js"></script>
