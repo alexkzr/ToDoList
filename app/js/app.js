@@ -67,26 +67,28 @@ document.addEventListener('DOMContentLoaded', () => {
 				e.target.parentNode.parentNode.className = 'addTransition';
 				noChildren();
 			}
-      
+			localStorage.setItem('todo', tdContainer.innerHTML);
+			
 		});
 		
 	}
 
 	form.addEventListener('submit', e => {
-    
 		e.preventDefault();
 		noChildren();
 		createLi();
+		localStorage.setItem('todo', tdContainer.innerHTML);
 
 	});
-  
 
-	localStorage.setItem('todo', tdContainer.innerHTML);
-	(function loadStorage() {
-		if (localStorage.getItem('todo') !== 'undefined') {
-			tdContainer.innerHTML = localStorage.getItem('todo');
-		}
+	(function storage() {
+
+		let storage = localStorage.getItem('todo');
+	
+		if (storage !== undefined) {tdContainer.innerHTML = storage;}
 	})();
+	
+
  
   
 });
