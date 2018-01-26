@@ -15,10 +15,12 @@ body {
 #wrapper {
   margin: 0 auto;
   max-width: 480px;
-  min-height: 500px;
+  min-height: 600px;
   background-color: rgba(214, 205, 205, 0.534);
   border-radius: 5px;
+  padding-bottom: 15px;
   margin-top: 30px;
+  padding-top: 20px;
 }
 
 .divider {
