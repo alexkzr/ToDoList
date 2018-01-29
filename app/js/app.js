@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', e => {
   e.preventDefault();
+
+  /**************************
+   *    Setting up all
+   *      constants
+   *************************/
   const submitButton = document.querySelector('.submit');
   submitButton.type = 'submit';
   const inputField = document.querySelector('.createItem');
@@ -8,31 +13,64 @@ document.addEventListener('DOMContentLoaded', e => {
   const form = document.querySelector('#header');
   const tdContainer = document.getElementById('tdContainer');
   const toDoItems = document.getElementById('toDoItems');
+  const wrapper = document.getElementById('wrapper');
+  const clearButton = document.getElementById('clear');
+
+  clearButton.addEventListener('click', () => {
+    localStorage.removeItem('todo');
+  });
+
   (function loadStorage() {
     if (localStorage.getItem('todo')) {
       tdContainer.innerHTML = localStorage.getItem('todo');
     }
   })();
 
-  function noChildren() {
+  /************************
+   * Tried to have an
+   * image show when the
+   * list is empty
+   ***********************/
+  (function noChildren() {
     if (toDoUl.hasChildNodes()) {
-      tdContainer.classList.remove('tdContainer');
+      tdContainer.classList.remove('notEmpty');
     } else {
-      tdContainer.className = 'tdContainer';
+      tdContainer.className += ' empty';
     }
-  }
+  })(); /*ul.removeChild(
+    /*e.target.parentNode
+  ); /*
+      ul.removeChild(e.target.parentNode);
+    });
 
+    // doneButton.addEventListener('click', e => {
+    //   e.preventDefault();
+    //   if (e.target.parentNode.parentNode.className === 'toDoUl') {
+    //     toDoUl.appendChild(e.target.parentNode.parentNode);
+    //     e.target.parentNode.className = 'removeTransition';
+
+    //     localStorage.setItem('todo', tdContainer.innerHTML);
+    //   } else {
+    //     completedUl.appendChild(e.target.parentNode);
+    //     e.target.parentNode.parentNode.className = 'addTransition';
+    //   }
+    //});
+  });
+*/ /*
   var todoLi = '.toDoUl > li';
   var completedLi = '.completedUl > li';
+
   var todoLiElements = document.querySelectorAll(todoLi);
   var completedLiElements = document.querySelectorAll(completedLi);
+
   //Attaching event handlers to the todoUl elements pulled from storage
+
   Array.prototype.forEach.call(todoLiElements, todoLi => {
     var editButton = todoLi.querySelector('.edit');
     var removeButton = todoLi.querySelector('.remove');
     var doneButton = todoLi.querySelector('.done');
     var listItem = todoLi;
-    console.log(editButton);
+
     // you can set listeners here
     editButton.addEventListener('click', e => {
       e.preventDefault();
@@ -46,33 +84,32 @@ document.addEventListener('DOMContentLoaded', e => {
 
     removeButton.addEventListener('click', e => {
       e.preventDefault();
-      const ul = e.target.parentNode.parentNode;
-      /*const li = e.target.parentNode.parentNode;*/
-      ul.removeChild(e.target.parentNode);
-      noChildren();
+      const ul = e.target.parentNode.parentNode.parentNode;
+      /*const li = e.target.parentNode.parentNode;*/ /*
     });
 
     doneButton.addEventListener('click', e => {
       e.preventDefault();
-      if (e.target.parentNode.parentNode.className === 'toDoUl') {
-        completedLiElements.push(e.target.parentNode);
+      console.log('UL parent class', e.target.parentNode.parentNode.className);
+
+      console.log('1st parent', e.target.parentNode);
+
+      if (e.target.parentNode.parentNode.className == 'toDoUl') {
+        completedUl.appendChild(e.target.parentNode);
         e.target.parentNode.className = 'removeTransition';
-        noChildren();
-        localStorage.setItem('todo', tdContainer.innerHTML);
       } else {
-        todoLiElements.push(e.target.parentNode);
+        toDoUl.appendChild(e.target.parentNode);
+
         e.target.parentNode.className = 'addTransition';
-        noChildren();
       }
     });
   });
-
+/*
   Array.prototype.forEach.call(completedLiElements, completedLi => {
     var editButton = completedLi.querySelector('.edit');
     var removeButton = completedLi.querySelector('.remove');
     var doneButton = completedLi.querySelector('.done');
     var listItem = completedLi;
-    console.log(editButton);
     // you can set listeners here
     editButton.addEventListener('click', e => {
       e.preventDefault();
@@ -87,28 +124,14 @@ document.addEventListener('DOMContentLoaded', e => {
     removeButton.addEventListener('click', e => {
       e.preventDefault();
       const ul = e.target.parentNode.parentNode;
-      /*const li = e.target.parentNode.parentNode;*/
-      ul.removeChild(e.target.parentNode);
-      noChildren();
-    });
+      /*const li = e.target.parentNode.parentNode;*/ /* */
 
-    doneButton.addEventListener('click', e => {
-      e.preventDefault();
-      if (e.target.parentNode.parentNode.parentNode.className === 'toDoUl') {
-        todoLiElements.push(e.target.parentNode.parentNode);
-        e.target.parentNode.parentNode.className = 'removeTransition';
-        noChildren();
-        localStorage.setItem('todo', tdContainer.innerHTML);
-      } else {
-        completedLiElements.push(e.target.parentNode.parentNode);
-        e.target.parentNode.parentNode.className = 'addTransition';
-        noChildren();
-      }
-    });
-  });
+  /**********************
+   * Working with local
+   * storage
+   *********************/
 
   function createLi() {
-    const wrapper = document.getElementById('wrapper');
     const doneButton = document.createElement('input');
     const checkedLabel = document.createElement('label');
     doneButton.type = 'checkbox';
@@ -119,15 +142,17 @@ document.addEventListener('DOMContentLoaded', e => {
     const editButton = document.createElement('button');
     const removeButton = document.createElement('button');
 
-    toDoUl.appendChild(listItem);
     p.textContent = inputField.value;
+    listItem.appendChild(p);
+    listItem.appendChild(checkedLabel);
+    listItem.appendChild(editButton);
+    listItem.appendChild(removeButton);
+    toDoUl.appendChild(listItem);
+
     inputField.value = '';
     editButton.className = 'edit';
     removeButton.className = 'remove';
-    listItem.appendChild(checkedLabel);
-    listItem.appendChild(p);
-    listItem.appendChild(editButton);
-    listItem.appendChild(removeButton);
+
     doneButton.style.display = 'none';
 
     editButton.addEventListener('click', () => {
@@ -142,26 +167,23 @@ document.addEventListener('DOMContentLoaded', e => {
       const ul = e.target.parentNode.parentNode;
       /*const li = e.target.parentNode.parentNode;*/
       ul.removeChild(e.target.parentNode);
-      noChildren();
     });
 
     doneButton.addEventListener('click', e => {
       if (e.target.parentNode.parentNode.parentNode.className === 'toDoUl') {
         completedUl.appendChild(e.target.parentNode.parentNode);
         e.target.parentNode.parentNode.className = 'removeTransition';
-        noChildren();
+
         localStorage.setItem('todo', tdContainer.innerHTML);
       } else {
         toDoUl.appendChild(e.target.parentNode.parentNode);
         e.target.parentNode.parentNode.className = 'addTransition';
-        noChildren();
       }
     });
   }
 
   form.addEventListener('submit', e => {
     e.preventDefault();
-    noChildren();
     createLi();
     localStorage.setItem('todo', tdContainer.innerHTML);
   });
