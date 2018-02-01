@@ -174,11 +174,41 @@ document.addEventListener('DOMContentLoaded', e => {
 
     inputField.value = '';
     editButton.className = 'edit';
+    editButton.textContent = 'Edit';
     removeButton.className = 'remove';
+    removeButton.textContent = 'Remove';
     doneButton.style.display = 'none';
 
-    editButton.addEventListener('click', () => {
-      listItem.contentEditable = 'true';
+    editButton.addEventListener('click', e => {
+      e.preventDefault();
+
+      var li = e.target.parentNode;
+
+      if (e.target.textContent ==='Edit') {
+      var editInput = document.createElement('input');
+      editInput.className = 'editInput';
+      editInput.type = 'text';  
+      var liChild = li.firstElementChild;
+      var p = li.firstElementChild;
+      editInput.value = p.textContent;
+      li.removeChild(p);
+      var liChild = li.firstElementChild;
+      li.insertBefore(editInput, liChild);
+      e.target.textContent = "Save";
+
+      } else if (e.target.textContent ==='Save') {
+        var editInput = document.querySelector('.editInput');
+        var p = document.createElement('p');
+        console.log(editInput.textContent, 'input');
+        p.textContent = editInput.value;
+        console.log(p.textContent, 'p');
+        li.removeChild(editInput);
+        var liChild = li.firstElementChild;
+        li.insertBefore(p, liChild);
+        e.target.textContent = "Edit";
+
+      }
+ 
     });
 
     listItem.addEventListener('blur', () => {
