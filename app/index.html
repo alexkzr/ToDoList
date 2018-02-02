@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
     <title>Kozy's ToDoList</title>
 </head>
@@ -15,9 +20,9 @@
     <div id="wrapper">
         <form id="header">
             <input type="text" class="createItem" placeholder="Add an item" required>
-            <button type="submit" name="submit" value="submit" class="submit"></button>
-            <button id="clear" value="Refresh Page" onClick="window.location.reload()">Clear All</button>
-            <button id="completed">Hide completed</button>
+            <button type="submit" name="submit" value="submit" class="submit"><i class="fas fa-space-shuttle"></i></button>
+            <button id="clear" value="Refresh Page" onClick="window.location.reload()" type="button" class=" btn btn-primary">Clear All</button>
+            <button id="completed" type="button" class=" btn btn-primary">Hide completed</button>
         </form>
         <div id="tdContainer">
             <div id="toDoItems">

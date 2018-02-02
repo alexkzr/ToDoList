@@ -173,9 +173,11 @@ document.addEventListener('DOMContentLoaded', e => {
     toDoUl.appendChild(listItem);
 
     inputField.value = '';
-    editButton.className = 'edit';
+    editButton.className = 'btn btn-info edit';
+    editButton.type = 'button';
     editButton.textContent = 'Edit';
-    removeButton.className = 'remove';
+    removeButton.className = 'btn btn-danger remove';
+    removeButton.type = 'button';
     removeButton.textContent = 'Remove';
     doneButton.style.display = 'none';
 
